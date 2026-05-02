@@ -31,6 +31,10 @@ coverage.xml
 
 # Logs
 *.log
+game_session_log.jsonl
+
+# Local implementation guides
+CODEX_GUIDE*.md
 
 # OS generated files
 .DS_Store

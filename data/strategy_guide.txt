@@ -1,0 +1,22 @@
+GUESSING GAME STRATEGY GUIDE
+
+BINARY SEARCH STRATEGY
+The most efficient approach to any number guessing game is binary search. Always guess the midpoint of your current range. If the range is 1 to 100, your first guess should be 50. If told "Too High", your new range becomes 1 to 49 and your next guess should be 25. If told "Too Low", your range becomes 51 to 100 and your next guess should be 75. Binary search guarantees you find any number in a range of N in at most log2(N) guesses. For a range of 1-100 that is 7 guesses. For 1-500 it is 9 guesses.
+
+EFFICIENCY SCORING
+A perfect game uses exactly log2(range_size) rounded up guesses. One extra guess above optimal is acceptable (score: good). Two extra guesses is average. Three or more extra guesses means the player is not using binary search.
+
+PATTERN RECOGNITION
+If a player repeatedly guesses numbers close to their previous guess after getting "Too High" or "Too Low", they are using linear search - very inefficient. Coach them toward the midpoint strategy. If a player's guesses are random, they have no strategy and need foundational guidance.
+
+EASY MODE (1-20)
+Maximum efficient guesses: 5. Recommend starting at 10. After any feedback, split the remaining range in half.
+
+NORMAL MODE (1-100)
+Maximum efficient guesses: 7. Recommend starting at 50. This is the classic binary search demonstration range.
+
+HARD MODE (1-500)
+Maximum efficient guesses: 9. Recommend starting at 250. Players often panic on large ranges - reassure them that the strategy is identical.
+
+ATTEMPT LIMIT AWARENESS
+If fewer than 3 attempts remain, the player is in danger of losing. Coaching should shift from strategy to urgency: give the exact optimal next guess rather than just explaining the method.

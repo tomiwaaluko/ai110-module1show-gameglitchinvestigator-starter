@@ -1,0 +1,17 @@
+BINARY SEARCH THEORY AND APPLICATIONS
+
+DEFINITION
+Binary search is a divide-and-conquer algorithm that locates a target value in a sorted range by repeatedly halving the search space. At each step, the midpoint of the current range is tested. If it equals the target, the search ends. If it is too high, the upper bound moves down. If it is too low, the lower bound moves up.
+
+TIME COMPLEXITY
+Binary search has O(log n) time complexity where n is the size of the search space. This is dramatically better than linear search O(n). For 1 million items, binary search takes at most 20 guesses while linear search could take 1 million.
+
+MIDPOINT CALCULATION
+The correct midpoint formula is: mid = low + (high - low) // 2
+This avoids integer overflow compared to (low + high) // 2, though in Python integers have unlimited precision so either works. For a range of 1 to 100: mid = 1 + (100-1)//2 = 50. For 1 to 49 after "Too High": mid = 1 + (49-1)//2 = 25.
+
+CONFIDENCE IN BINARY SEARCH
+After each guess, the remaining search space is halved. The confidence that you will win within the remaining attempt limit increases as your range shrinks. If 3 attempts remain and range is 8 or fewer numbers, you are guaranteed to win. If range is larger than 2^(attempts_remaining), you could theoretically lose.
+
+PRACTICAL COACHING APPLICATION
+When coaching a player, calculate: optimal_next_guess = low + (high - low) // 2. Compare this to what the player actually guessed. If their guess is more than 20% away from the optimal, they are not using binary search efficiently. Provide the optimal guess as a concrete recommendation.

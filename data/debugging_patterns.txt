@@ -1,0 +1,16 @@
+COMMON DEBUGGING PATTERNS IN AI-GENERATED CODE
+
+INVERTED CONDITIONAL BUG
+One of the most common AI code bugs is inverted comparisons. When a function should return "Too High" for guess > secret, an AI may accidentally write it as guess < secret. This produces systematically wrong output - the code runs without errors but gives wrong answers every time. Detection: the behavior is consistently wrong (not randomly wrong). Fix: swap the comparison operators.
+
+STATE MANAGEMENT BUG IN STREAMLIT
+Streamlit re-executes the entire Python script from top to bottom on every user interaction. Any variable assigned at the top level without session_state protection is reset on every rerun. Symptom: values that should persist (like a secret number) appear to change randomly. Fix: wrap initialization in `if "key" not in st.session_state`.
+
+TYPE COERCION BUG
+Comparing an integer guess to a string secret always returns False in Python. `50 == "50"` is False. AI may insert `str()` casts at unexpected places. Symptom: correct guesses appear wrong. Detection: print types of both values. Fix: ensure both sides of comparison are the same type.
+
+OFF-BY-ONE IN SCORING
+Score calculations using attempt_number + 1 instead of attempt_number create systematic inflation of attempt counts. Always verify scoring formulas against manual calculations with known inputs.
+
+DISPLAY BUG (HARDCODED VALUES)
+AI-generated UIs often hardcode display values that should be dynamic. Example: showing "1 to 100" even when the range changes based on difficulty. Fix: always reference the variable, never the hardcoded number.
